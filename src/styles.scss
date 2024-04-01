@@ -1,43 +1,73 @@
+// Import the Angular Material theming functions
+@use "@angular/material" as mat;
+@import url("https://use.typekit.net/jnq3uxd.css");
 
-// Custom Theming for Angular Material
-// For more information: https://material.angular.io/guide/theming
-@use '@angular/material' as mat;
-// Plus imports for other components in your app.
+// Define your custom typography
+$custom-typography: mat.define-typography-config(
+  $font-family: "sofia-pro",
+);
 
-// Include the common styles for Angular Material. We include this here so that you only
-// have to load a single css file for Angular Material in your app.
-// Be sure that you only ever include this mixin once!
+// Include the common styles for Angular Material using the new `mat.core` mixin
 @include mat.core();
 
-// Define the palettes for your theme using the Material Design palettes available in palette.scss
-// (imported above). For each palette, you can optionally specify a default, lighter, and darker
-// hue. Available color palettes: https://material.io/design/color/
-$trello-primary: mat.define-palette(mat.$indigo-palette);
-$trello-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
+// Define your custom orange palette without contrast
+$custom-orange-palette: (
+  50: #fff3e0,
+  100: #ffe0b2,
+  200: #ffcc80,
+  300: #ffb74d,
+  400: #ffa726,
+  500: #ff9800,
+  600: #fb8c00,
+  700: #f57c00,
+  800: #ef6c00,
+  900: #e65100,
+  contrast: (
+    50: rgba(0, 0, 0, 0.87),
+    100: rgba(0, 0, 0, 0.87),
+    200: rgba(0, 0, 0, 0.87),
+    300: rgba(0, 0, 0, 0.87),
+    400: rgba(0, 0, 0, 0.87),
+    500: white,
+    600: white,
+    700: white,
+    800: white,
+    900: white,
+  ),
+);
 
-// The warn palette is optional (defaults to red).
-$trello-warn: mat.define-palette(mat.$red-palette);
+// Define your custom orange palette using the new Angular Material syntax
+$custom-orange: mat.define-palette($custom-orange-palette);
 
-// Create the theme object. A theme consists of configurations for individual
-// theming systems such as "color" or "typography".
-$trello-theme: mat.define-light-theme((
-  color: (
-    primary: $trello-primary,
-    accent: $trello-accent,
-    warn: $trello-warn,
+$mat-green: mat.define-palette(mat.$green-palette, A200, A100, A400);
+
+$mat-red: mat.define-palette(mat.$red-palette);
+
+// Define your custom theme using the new Angular Material syntax with a dark theme
+$trello-theme: mat.define-dark-theme(
+  (
+    color: (
+      primary: $custom-orange,
+      accent: $mat-green,
+      warn: $mat-red,
+    ),
   )
-));
+);
 
-// Include theme styles for core and each component used in your app.
-// Alternatively, you can import and @include the theme mixins for each component
-// that you are using.
+// Include theme styles for core and each component used in your app using the new `mat.all-component-themes` mixin
 @include mat.all-component-themes($trello-theme);
 
 /* You can add global styles to this file, and also import other style files */
 
-html, body { height: 100%; }
-body { margin: 0; font-family: sofia-pro, sans-serif; }
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: "sofia-pro", sans-serif;
+}
 a {
-    color: white;
-    text-decoration: none;
+  color: white;
+  text-decoration: none;
 }

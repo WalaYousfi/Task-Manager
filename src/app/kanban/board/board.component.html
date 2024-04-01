@@ -1,6 +1,6 @@
 <mat-card class="outer-card">
   <mat-card-header>
-    <!-- we add ngcontent to gat the content of the handle -->
+    <!-- we add ngcontent for the content of the handle -->
     <ng-content></ng-content>
     <mat-card-title>
       {{ board.title }}
@@ -26,10 +26,11 @@
         {{ task.description }}
       </mat-card>
     </div>
+
     <button mat-stroked-button (click)="openDialog()">
       <mat-icon>add</mat-icon>
     </button>
-  </div>
 
-  <app-delete-button (delete)="handleDelete()"></app-delete-button>
+    <app-delete-button (delete)="handleDelete()"></app-delete-button>
+  </div>
 </mat-card>

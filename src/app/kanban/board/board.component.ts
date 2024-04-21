@@ -21,7 +21,7 @@ export class BoardComponent {
   }
 
   openDialog(task?: Task, idx?: number): void {
-    const newTask = { label: 'purple' };
+    const newTask = {status: 'To Do', label: 'purple' };
     const dialogRef = this.dialog.open(TaskDialogComponent, {
       width: '500px',
       data: task

@@ -6,6 +6,8 @@ export interface Board {
 }
 
 export interface Task {
+  status?: string;
+  summary?: string;
   description?: string;
   label?: 'purple' | 'blue' | 'green' | 'yellow' | 'red' | 'gray';
 }

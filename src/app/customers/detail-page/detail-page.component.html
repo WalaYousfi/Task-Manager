@@ -1,1 +1,11 @@
-<p>detail-page works!</p>
+<h2 mat-dialog-title>Install Angular</h2>
+<mat-dialog-content class="mat-typography" >
+  <div *ngIf="teamMember$ | async as teamMember">
+    <h3>{{ teamMember.name }}</h3>
+    <p>email: {{ teamMember.email }}</p>
+  </div>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Cancel</button>
+  <button mat-button [mat-dialog-close]="true" cdkFocusInitial>Install</button>
+</mat-dialog-actions>

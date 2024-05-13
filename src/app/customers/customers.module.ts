@@ -7,14 +7,7 @@ import { ListPageComponent } from './list-page/list-page.component';
 import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
-  declarations: [
-    DetailPageComponent,
-    ListPageComponent
-  ],
-  imports: [
-    CommonModule,
-    CustomersRoutingModule,
-    SharedModule
-  ]
+  declarations: [DetailPageComponent, ListPageComponent],
+  imports: [CommonModule, CustomersRoutingModule, SharedModule],
 })
-export class CustomersModule { }
+export class CustomersModule {}

@@ -1,42 +1,23 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Component, Inject, OnInit } from '@angular/core';
+import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
-import { tap } from 'rxjs/operators';
-import { SeoService } from '../../services/seo.service';
 import { Observable } from 'rxjs';
-
+import { teamMember } from '../teamMember';
 @Component({
   selector: 'app-detail-page',
   templateUrl: './detail-page.component.html',
-  styleUrls: ['./detail-page.component.scss']
+  styleUrls: ['./detail-page.component.scss'],
 })
-export class DetailPageComponent implements OnInit {
-  customerId!: string | null;
-  customer!: Observable<any>;
+export class DetailPageComponent {
+  teamMember$: Observable<teamMember>;
 
   constructor(
-    private route: ActivatedRoute,
-    private db: AngularFirestore,
-    private seo: SeoService
-  ) {}
-
-  ngOnInit() {
-    this.customerId = this.route.snapshot.paramMap.get('id');
-
-    if (this.customerId) {
-      this.customer = this.db
-        .collection('customers')
-        .doc<any>(this.customerId)
-        .valueChanges()
-        .pipe(
-          tap(cust =>
-            this.seo.generateTags({
-              title: cust.name,
-              description: cust.bio,
-              image: cust.image,
-            })
-          )
-        );
-    }
+    @Inject(MAT_DIALOG_DATA) public data: { memberId: string },
+    private firestore: AngularFirestore
+  ) {
+    this.teamMember$ = this.firestore
+      .doc<teamMember>(`teamMembers/${data.memberId}`)
+      .valueChanges();
   }
+
 }

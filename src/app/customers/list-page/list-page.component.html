@@ -1,10 +1,19 @@
-<h1>List Page</h1>
+<h1>Admin dashboard</h1>
 
-<mat-nav-list role="list">
-    <h3 mat-subheader>Customers (Fake Data)</h3>
+<mat-list>
+  <h3 mat-subheader>Team Members</h3>
+  @for (member of teamMembers |async; track member) {
+  <mat-list-item >
+    <mat-icon mat-list-icon>member</mat-icon>
+    <h4>{{ member.data.name }} - {{ member.data.email }}
+      <button mat-button (click)="openDialog(member.id)">Open dialog</button>
+    </h4>
+    <!-- dialog-content-example.html -->
 
-    <mat-list-item *ngFor="let cust of customers | async" [routerLink]="cust.id" role="listitem">
-        <mat-icon mat-list-icon>account_box</mat-icon>
-        <h3>{{ cust.name }}</h3>
-    </mat-list-item>
-</mat-nav-list>
+    @if (!$last) {
+    <mat-divider [inset]="true"></mat-divider>
+    }
+  </mat-list-item>
+  }
+  <mat-divider></mat-divider>
+</mat-list>

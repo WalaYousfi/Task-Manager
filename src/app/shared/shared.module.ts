@@ -16,7 +16,7 @@ import { ShellComponent } from './shell/shell.component';
 import { DeleteButtonComponent } from './delete-button/delete-button.component';
 import { MatSelectModule } from '@angular/material/select';
 import { MatError } from '@angular/material/form-field';
-
+import {MatDialog, MatDialogModule} from '@angular/material/dialog';
 const components = [ShellComponent, DeleteButtonComponent];
 
 const modules = [
@@ -35,7 +35,9 @@ const modules = [
   MatSnackBarModule,
   RouterModule,
   MatSelectModule,
-  MatError
+  MatError,
+  MatDialog,
+  MatDialogModule
 ];
 
 @NgModule({

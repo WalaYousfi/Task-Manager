@@ -2,7 +2,7 @@
 
 <mat-list>
   <h3 mat-subheader>Team Members</h3>
-  @for (member of teamMembers |async; track member) {
+  @for (member of teamMembers |async; track member; let i= $index) {
   <mat-list-item >
     <mat-icon mat-list-icon>member</mat-icon>
     <h4>{{ member.data.name }} - {{ member.data.email }}

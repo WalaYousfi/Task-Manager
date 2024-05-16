@@ -1,16 +1,27 @@
-<!-- <h2 mat-dialog-title>Install Angular</h2>
-<mat-dialog-content class="mat-typography" >
-  <div *ngIf="teamMember$ | async as teamMember">
-    <h3>{{ teamMember.name }}</h3>
-    <p>email: {{ teamMember.email }}</p>
+<h1 matDialogTitle>Details</h1>
+<mat-dialog-content *ngIf="teamMember$ | async as teamMember" class="content">
+  <p><span>Name:</span> {{ teamMember.name }}</p>
+  <p><span>Email:</span> {{ teamMember.email }}</p>
+  <p><span>Position:</span> {{ teamMember.position }}</p>
+  <h3>tasks</h3>
+  <p>{{ teamMember.name }} is assigned {{ teamMember.Tasks.length }} tasks</p>
+  <div>
+    @for (task of teamMember.Tasks ; track task; let i= $index) {
+    <div>
+      <p>task number {{ i + 1 }}</p>
+      <p><span>Status:</span> {{ task.status }}</p>
+      <p><span>Summary:</span> {{ task.summary }}</p>
+      <p><span>Description:</span> {{ task.description }}</p>
+
+      @if (!$last) {
+      <mat-divider></mat-divider>
+      }
+    </div>
+    }
+    <mat-divider></mat-divider>
   </div>
+  <mat-divider></mat-divider>
 </mat-dialog-content>
 <mat-dialog-actions align="end">
-  <button mat-button mat-dialog-close>Cancel</button>
-  <button mat-button [mat-dialog-close]="true" cdkFocusInitial>Install</button>
-</mat-dialog-actions> -->
-
-<div *ngIf="teamMember$ | async as teamMember">
-  <h1>{{ teamMember.name }}</h1>
-  <p>Email: {{ teamMember.email }}</p>
-</div>
+  <button mat-button mat-dialog-close>Close</button>
+</mat-dialog-actions>

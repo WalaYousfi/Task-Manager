@@ -4,7 +4,7 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 @Component({
   selector: 'app-board-dialog',
   template: `
-    <h1 mat-dialog-title>Board</h1>
+    <h1 matDialogTitle>Board</h1>
     <div mat-dialog-content class="content">
       <p>What shall we call this board?</p>
       <mat-form-field>

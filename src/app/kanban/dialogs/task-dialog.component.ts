@@ -1,7 +1,6 @@
 import { Component, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { BoardService } from '../board.service';
-import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-task-dialog',

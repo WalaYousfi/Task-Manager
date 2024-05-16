@@ -5,5 +5,5 @@ export interface teamMember {
   name: string;
   email: string;
   position: string;
-  tasks?: Task[];
+  Tasks?: Task[];
 }

@@ -3,10 +3,12 @@
 <mat-list>
   <h3 mat-subheader>Team Members</h3>
   @for (member of teamMembers |async; track member; let i= $index) {
-  <mat-list-item >
+  <mat-list-item>
     <mat-icon mat-list-icon>member</mat-icon>
-    <h4>{{ member.data.name }} - {{ member.data.email }}
-      <button mat-button (click)="openDialog(member.id)">Open dialog</button>
+    <h4>
+      <button mat-button [routerLink]="['manageMember', member.id]">click</button>
+      {{ member.data.name }} - {{ member.data.email }}
+      <button mat-button (click)="openDialog(member.id)">More</button>
     </h4>
 
     @if (!$last) {

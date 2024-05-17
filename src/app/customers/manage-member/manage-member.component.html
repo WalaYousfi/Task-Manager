@@ -1,0 +1,48 @@
+<div *ngIf="member$ | async as member; else loading">
+  <p><span>Name:</span> {{ member.data.name }}</p>
+  <p><span>Email:</span> {{ member.data.email }}</p>
+  <p><span>Position:</span> {{ member.data.position }}</p>
+  <h3>tasks</h3>
+  <p>{{ member.data.name }} is assigned {{ member.data.Tasks.length }} tasks</p>
+  <div>
+    @for (task of member.data.Tasks ; track task; let i= $index) {
+    <mat-accordion>
+      <mat-expansion-panel
+        [expanded]="panelOpenStates[i]"
+        (opened)="panelOpenStates[i] = true"
+        (closed)="panelOpenStates[i] = false"
+        hideToggle
+      >
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            <p>task number {{ i + 1 }}</p>
+          </mat-panel-title>
+          <mat-panel-description>
+            <p><span>Summary:</span> {{ task.summary }}</p>
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+      </mat-expansion-panel>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title> More Task Details </mat-panel-title>
+          <mat-panel-description>
+            {{ panelOpenStates[i] ? "Opened" : "Closed" }}
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+
+        <p><span>Status:</span> {{ task.status }}</p>
+        <p><span>Description:</span> {{ task.description }}</p>
+      </mat-expansion-panel>
+    </mat-accordion>
+
+    }
+  </div>
+</div>
+
+<ng-template #loading>
+  <p>loading...</p>
+</ng-template>
+
+<div>
+  <button mat-button>Assign Task</button>
+</div>

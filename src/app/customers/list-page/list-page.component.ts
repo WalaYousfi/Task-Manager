@@ -23,19 +23,21 @@ export class ListPageComponent implements OnInit {
       .collection<teamMember>('teamMembers')
       .snapshotChanges()
       .pipe(
-        map((actions) =>
-          actions.map((a) => {
+        map((actions) => {
+          const members = actions.map((a) => {
             const data = a.payload.doc.data() as teamMember;
             const id = a.payload.doc.id;
             return { id, data };
-          })
-        )
+          });
+          console.log('Fetched team members:', members);
+          return members;
+        })
       );
   }
 
   openDialog(memberId: string) {
-  this.dialog.open(DetailPageComponent, {
-    data: {memberId},
-  })
+    this.dialog.open(DetailPageComponent, {
+      data: { memberId },
+    });
   }
 }

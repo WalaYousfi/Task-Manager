@@ -19,5 +19,4 @@ export class DetailPageComponent {
       .doc<teamMember>(`teamMembers/${data.memberId}`)
       .valueChanges();
   }
-
 }

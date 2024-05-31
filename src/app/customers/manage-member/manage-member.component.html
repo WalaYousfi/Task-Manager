@@ -37,12 +37,11 @@
 
     }
   </div>
+  <div>
+    <button mat-button (click)="openDialog(member.id)">Assign Task</button>
+  </div>
 </div>
 
 <ng-template #loading>
   <p>loading...</p>
 </ng-template>
-
-<div>
-  <button mat-button>Assign Task</button>
-</div>

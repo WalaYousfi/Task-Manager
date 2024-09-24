@@ -10,7 +10,7 @@ import { ManageMemberComponent } from './manage-member/manage-member.component';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { AssignTaskComponent } from './assign-task/assign-task.component';
 import { ReactiveFormsModule } from '@angular/forms';
-
+import {MatMenuModule} from '@angular/material/menu';
 @NgModule({
   declarations: [DetailPageComponent, ListPageComponent, ManageMemberComponent, AssignTaskComponent],
   imports: [
@@ -19,7 +19,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     SharedModule,
     MatDialogModule,
     MatExpansionModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatMenuModule
   ],
 })
 export class CustomersModule {}

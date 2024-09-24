@@ -15,3 +15,15 @@ span{
 mat-accordion{
     margin: 10px;
 }
+
+.content-card{
+        display: flex;
+        flex-direction: column;
+      justify-content: center;
+      align-items: center;
+
+}
+
+mat-card{
+    width: 400px;
+}

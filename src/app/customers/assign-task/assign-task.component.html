@@ -15,7 +15,13 @@
     </mat-form-field>
     <div mat-dialog-actions>
       <button mat-button type="button" (click)="onNoClick()">Cancel</button>
-      <button mat-button type="submit" [disabled]="taskForm.invalid">
+      <button
+        mat-button
+        type="submit"
+        [disabled]="taskForm.invalid"
+        mat-raised-button
+        color="accent"
+      >
         Assign
       </button>
     </div>

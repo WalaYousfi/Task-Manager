@@ -1,20 +1,28 @@
-<h1>Admin dashboard</h1>
+<h1 class="dashboard-title">Admin Dashboard</h1>
 
-<mat-list>
-  <h3 mat-subheader>Team Members</h3>
-  @for (member of teamMembers |async; track member; let i= $index) {
-  <mat-list-item>
-    <mat-icon mat-list-icon>member</mat-icon>
-    <h4>
-      <button mat-button [routerLink]="['manageMember', member.id]">click</button>
-      {{ member.data.name }} - {{ member.data.email }}
-      <button mat-button (click)="openDialog(member.id)">More</button>
-    </h4>
-
-    @if (!$last) {
-    <mat-divider [inset]="true"></mat-divider>
-    }
-  </mat-list-item>
+<mat-list class="team-list">
+  <h3 mat-subheader class="team-subheader">Team Members</h3>
+  @for (member of teamMembers | async; track member; let i = $index) {
+    <mat-list-item class="team-member-item">
+      <div class="member-info">
+        <h4 class="member-name">{{ member.data.name }} - {{ member.data.email }}</h4>
+        <button
+          mat-icon-button
+          [matMenuTriggerFor]="menu"
+          aria-label="Example icon-button with a menu"
+          class="menu-button"
+        >
+          <mat-icon>more_vert</mat-icon>
+        </button>
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item (click)="openDialog(member.id)">Details</button>
+          <button mat-menu-item [routerLink]="['manageMember', member.id]">
+            Settings <mat-icon>settings_accessibility</mat-icon>
+          </button>
+          <button mat-menu-item >Remove <mat-icon>delete</mat-icon></button>
+        </mat-menu>
+      </div>
+ 
+    </mat-list-item>
   }
-  <mat-divider></mat-divider>
 </mat-list>

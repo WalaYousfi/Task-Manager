@@ -1,7 +1,13 @@
-<div *ngIf="member$ | async as member; else loading">
-  <p><span>Name:</span> {{ member.data.name }}</p>
-  <p><span>Email:</span> {{ member.data.email }}</p>
-  <p><span>Position:</span> {{ member.data.position }}</p>
+<div *ngIf="member$ | async as member; else loading" class="content-card">
+<div >
+  <mat-card>
+    <mat-card-header >About {{ member.data.name }} </mat-card-header>
+    <mat-card-content>
+      <p><span>Email:</span> {{ member.data.email }}</p>
+      <p><span>Position:</span> {{ member.data.position }}</p>
+    </mat-card-content>
+  </mat-card>
+</div>
   <h3>tasks</h3>
   <p>{{ member.data.name }} is assigned {{ member.data.Tasks.length }} tasks</p>
   <div>
@@ -38,7 +44,14 @@
     }
   </div>
   <div>
-    <button mat-button (click)="openDialog(member.id)">Assign Task</button>
+    <button
+      mat-button
+      (click)="openDialog(member.id)"
+      mat-raised-button
+      color="accent"
+    >
+      Assign Task
+    </button>
   </div>
 </div>
 
